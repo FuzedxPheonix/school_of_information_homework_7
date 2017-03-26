@@ -172,7 +172,7 @@ more_than_2_rts = cur.execute(select_sql).fetchall()
 
 select_sql = """ SELECT tweet_text FROM Tweets WHERE tweet_text Like"%RT%" """
 
-first_rt = str(cur.execute(select_sql).fetchone()[0])
+first_rt = cur.execute(select_sql).fetchone()[0]
 
 
 # Finally, done with database stuff for a bit: write a line of code to close the cursor to the database.

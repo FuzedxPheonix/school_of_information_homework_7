@@ -131,11 +131,7 @@ statement = 'INSERT INTO Tweets VALUES (?, ?, ?, ?, ?)'
 
 for item in umsi_tweets:
 	some_tuple = (item["id"], item["user"]["screen_name"],item["created_at"], item["text"], item["retweet_count"])
-	# print(item["id"])item["text"]
-	# print(item["user"]["screen_name"])
-	# print(item["created_at"])
-	# print(item["retweet_count"])
-	# print("***************************")
+
 	cur.execute(statement,some_tuple)
 
 conn.commit()
@@ -174,9 +170,9 @@ more_than_2_rts = cur.execute(select_sql).fetchall()
 
 # Select all of the TEXT values of the tweets that are retweets of another account (i.e. have "RT" at the beginning of the tweet text). Save the FIRST ONE from that group of text values in the variable first_rt. Note that first_rt should contain a single string value, not a tuple.
 
-# select_sql = """SELECT tweet_text FROM Tweets WHERE tweet_text Like"%RT%""""
+select_sql = """ SELECT tweet_text FROM Tweets WHERE tweet_text Like"%RT%" """
 
-# first_rt = cur.execute(select_sql)
+first_rt = str(cur.execute(select_sql).fetchone()[0])
 
 
 # Finally, done with database stuff for a bit: write a line of code to close the cursor to the database.
